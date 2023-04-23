@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class RoomObjectScroll : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.position -= new Vector3(Global.RoomSpeed * Time.deltaTime, 0, 0);
     }
 }

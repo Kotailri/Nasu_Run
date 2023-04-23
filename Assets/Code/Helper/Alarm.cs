@@ -14,7 +14,7 @@ public class Alarm
         if (startsAtZero)
             ResetTimer();
 
-        Global.alarmManager.AddTimer(this);
+        Managers.alarmManager.AddTimer(this);
     }
 
     public bool IsAvailable()

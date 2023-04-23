@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlarmManager : MonoBehaviour
+public class AlarmManager : Manager
 {
     private List<Alarm> timers = new List<Alarm>();
 
@@ -10,9 +10,9 @@ public class AlarmManager : MonoBehaviour
         timers.Add(t);
     }
 
-    private void Awake()
+    protected override void SetManager()
     {
-        Global.alarmManager = this;
+        Managers.alarmManager = this;
     }
 
     void Update()

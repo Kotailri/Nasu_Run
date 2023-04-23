@@ -13,17 +13,15 @@ public class PlayerMovement : MonoBehaviour
     private KeyCode keycodeDash = KeyCode.LeftShift;
 
     private Rigidbody2D rb;
-    private BoxCollider2D col;
     private Vector2 playerSize;
     private Alarm dashAlarm;
     private bool isDashing = false;
 
     private void Start()
     {
-        col = GetComponent<BoxCollider2D>();
         dashAlarm = new Alarm(Config.dashCooldown);
         rb = GetComponent<Rigidbody2D>();
-        playerSize = col.size;
+        playerSize = GetComponent<BoxCollider2D>().size;
     }
 
     private void HandleMovement()
@@ -63,6 +61,11 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    public bool IsDashing()
+    {
+        return isDashing;
+    }
+
     private void HandleDash()
     {
         if ((Input.GetKey(keycodeDash) || Input.GetMouseButton(1)) && dashAlarm.IsAvailable())
@@ -83,10 +86,8 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator DashTimer()
     {
         isDashing = true;
-        col.enabled = false;
         yield return new WaitForSecondsRealtime(Config.dashTimer);
         isDashing = false;
-        col.enabled = true;
     }
 
     private void ClampPosition()
