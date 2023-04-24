@@ -88,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2690907092540783162}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -160,6 +160,9 @@ GameObject:
   - component: {fileID: 2690907092969346799}
   - component: {fileID: 2690907092969346786}
   - component: {fileID: 2690907092969346785}
+  - component: {fileID: 8012199888463939505}
+  - component: {fileID: 118816624710563754}
+  - component: {fileID: 9122386842572429631}
   m_Layer: 0
   m_Name: moyai
   m_TagString: Untagged
@@ -287,4 +290,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a35bd175e454148a274855eeec853a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 00000000
+  tags: 0000000002000000
+--- !u!114 &8012199888463939505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690907092969346792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb6a10649ee34e47848210b21cdfa38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnLocation: {x: 0.035, y: 2.5, z: 0}
+  parent: {fileID: 2690907092969346787}
+--- !u!114 &118816624710563754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690907092969346792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21113a71e772dff40a4e6db35880093c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9122386842572429631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690907092969346792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c0189e5f46a7e42aebc98e4a92bdab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -40,4 +40,10 @@ public static class Utility
             Destroy(gameObject);
         }
     }
+
+    public static bool IsWithinRadius(Vector2 center, Vector2 point, float radius)
+    {
+        float distance = Mathf.Sqrt(Mathf.Pow(point.x - center.x, 2) + Mathf.Pow(point.y - center.y, 2));
+        return distance <= radius;
+    }
 }

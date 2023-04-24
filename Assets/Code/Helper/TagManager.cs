@@ -4,7 +4,8 @@ using UnityEngine;
 public enum Tags
 {
     HitsPlayer,
-    HitsEnemies
+    HitsEnemies,
+    DamagedByBullets
 }
 
 public class TagManager : MonoBehaviour

@@ -35,7 +35,7 @@ public class DestroyOutofBounds : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (transform.position.y <= minBound.y - 5 && minY)
+        if (transform.position.y <= minBound.y - Global.RoomSpeed && minY)
         {
             Destroy(gameObject);
         }

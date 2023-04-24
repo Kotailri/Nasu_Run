@@ -15,14 +15,6 @@ public class BobbingEffect : MonoBehaviour
         LeanTween.moveY(gameObject, originalPosition.y + amplitude, duration / 2f)
             .setEase(LeanTweenType.easeOutSine)
             .setLoopPingPong()
-            .setRepeat(-1)
-            .setOnUpdate(OnUpdate);
-    }
-
-    void OnUpdate(float value)
-    {
-        Vector3 newPosition = new Vector3(transform.position.x, originalPosition.y, transform.position.z);
-        newPosition.y = value;
-        transform.position = newPosition;
+            .setRepeat(-1);
     }
 }
