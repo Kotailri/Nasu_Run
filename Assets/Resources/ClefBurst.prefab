@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clef: {fileID: 107302204520807331, guid: dd9192ce6141d3446be07e41fdf9c37e, type: 3}
-  numClefs: 5
-  spawnRadius: 5
+  numClefs: 3
+  spawnRadius: 3
   coinMoveTime: 0.25

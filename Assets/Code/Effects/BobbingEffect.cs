@@ -17,4 +17,10 @@ public class BobbingEffect : MonoBehaviour
             .setLoopPingPong()
             .setRepeat(-1);
     }
+
+    private void OnDisable()
+    {
+        LeanTween.cancel(gameObject);
+        transform.position = new Vector3(transform.position.x, originalPosition.y, transform.position.z);
+    }
 }

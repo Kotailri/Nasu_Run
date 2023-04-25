@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -27,6 +28,10 @@ public class RoomManager : Manager
 
     public Transform roomSpawnLocation;
 
+    [Space(15.0f)]
+    public float roomSpeedIncrement;
+    public float roomSpeedIncrementTimer;
+
     protected override void SetManager()
     {
         Managers.roomManager = this;
@@ -39,6 +44,14 @@ public class RoomManager : Manager
         //currentRoom = currentRoomSection.Rooms[currentRoomIndex];
         //Instantiate(currentRoom, roomSpawnLocation.position, Quaternion.identity);
         Global.RoomSpeed = Config.defaultRoomSpeed;
+        StartCoroutine(IncrementSpeed());
+    }
+
+    private IEnumerator IncrementSpeed()
+    {
+        yield return new WaitForSeconds(roomSpeedIncrementTimer);
+        Global.RoomSpeed += roomSpeedIncrement;
+        StartCoroutine(IncrementSpeed());
     }
 
     public void CreateNextRoom()

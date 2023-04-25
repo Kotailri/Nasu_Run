@@ -23,6 +23,7 @@ public class GameOverUI : MonoBehaviour
 
     public void RestartGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -38,6 +39,7 @@ public class GameOverUI : MonoBehaviour
         content.SetActive(true);
         gameOverTextBox.text = "Distance: " + (int)Managers.distanceManager.GetDistance() + "m\n\n"
             + "Clefs: x" + Managers.scoreManager.GetScore() + "\n\n" + "Score: " + CalculateScore();
+        Time.timeScale = 0;
     }
     private string CalculateScore()
     {

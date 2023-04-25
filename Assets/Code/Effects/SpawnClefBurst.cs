@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class SpawnClefBurst : MonoBehaviour
 {
-    public void ClefBurst()
+    public void ClefBurst(int numClefs)
     {
-        Instantiate(Resources.Load<GameObject>("ClefBurst"), transform.position, Quaternion.identity);
+        GameObject burst = Instantiate(Resources.Load<GameObject>("ClefBurst"), transform.position, Quaternion.identity);
+        burst.GetComponent<ClefBurst>().numClefs = numClefs;
+        burst.GetComponent<ClefBurst>().Create();
     }
 }

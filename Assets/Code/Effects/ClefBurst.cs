@@ -11,11 +11,12 @@ public class ClefBurst : MonoBehaviour
     public float spawnRadius = 5.0f;
     public float coinMoveTime = 1.0f;
 
-    public void Start()
+    public void Create()
     {
         for (int i = 0; i < numClefs; i++)
         {
-            Vector2 spawnPos = (Vector2)transform.position + Random.insideUnitCircle * spawnRadius;
+            float angle = i * Mathf.PI * 2 / numClefs;
+            Vector2 spawnPos = (Vector2)transform.position + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * spawnRadius;
             GameObject coin = Instantiate(clef, transform.position, Quaternion.identity);
             coin.GetComponent<Clef>().SetInstaMagnetic();
             coin.transform.position = transform.position;
@@ -26,10 +27,5 @@ public class ClefBurst : MonoBehaviour
                      .setOnComplete(() => coinCollider.enabled = true);
         }
         Destroy(gameObject);
-    }
-
-    private void ToggleHitbox(bool on)
-    {
-        
     }
 }

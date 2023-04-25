@@ -12,7 +12,8 @@ public class Moyai : Enemy
             isStunned = true;
             GetComponent<StunEffect>().EnableStunEffect();
             transform.localScale = new Vector3(1, 0.75f, 1);
-            GetComponent<SpriteRenderer>().color = new Color(1, 0.8078432f, 1, 1);
+            GetComponent<SpriteRenderer>().color = new Color(1, 0.5f, 1, 1);
+            GetComponent<BobbingEffect>().enabled = false;
             SetHealth(1);
             return;
         }
@@ -26,9 +27,14 @@ public class Moyai : Enemy
         {
             if (playerMovement.IsDashing())
             {
-                GetComponent<SpawnClefBurst>().ClefBurst();
-                Destroy(gameObject.transform.parent.gameObject, 0.25f);
+                GetComponent<SpawnClefBurst>().ClefBurst(Random.Range(3,6));
+                Destroy(gameObject);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(gameObject.transform.parent.gameObject);
     }
 }

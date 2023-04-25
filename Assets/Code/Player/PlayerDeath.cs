@@ -43,6 +43,15 @@ public class PlayerDeath : MonoBehaviour
         {
             if (tm.IsOfTag(Tags.HitsPlayer) && !GetComponent<PlayerMovement>().IsDashing())
             {
+                if (TryGetComponent(out PlayerShield shield))
+                {
+                    if (shield.HasShield())
+                    {
+                        shield.RemoveShield();
+                        Destroy(tm.gameObject);
+                        return;
+                    }
+                }
                 PlayerDie();
             }
         }
