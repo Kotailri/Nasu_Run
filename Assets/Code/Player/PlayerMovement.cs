@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private Alarm dashAlarm;
     private bool isDashing = false;
 
+    private Vector3 dashDirection;
+    public GameObject afterImage;
+
     private void Start()
     {
         dashAlarm = new Alarm(Config.dashCooldown);
@@ -49,14 +52,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (isDashing)
         {
-            if (velocity == Vector3.zero)
-                rb.velocity = new Vector3(1,0,0) * Config.playerMovespeed * Config.dashPower;
+            if (dashDirection == Vector3.zero)
+            {
+                rb.velocity = new Vector3(1, 0, 0) * Config.playerMovespeed * Config.dashPower;
+            }
             else
-                rb.velocity = velocity.normalized * Config.playerMovespeed * Config.dashPower;
+            {
+                rb.velocity = dashDirection.normalized * Config.playerMovespeed * Config.dashPower;
+            }
+                
         }
         else
         {
             rb.velocity = velocity.normalized * Config.playerMovespeed;
+            dashDirection = velocity;
         }
         
     }
@@ -68,8 +77,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDash()
     {
-        if ((Input.GetKey(keycodeDash) || Input.GetMouseButton(1)) && dashAlarm.IsAvailable())
+        if ((Input.GetKeyDown(keycodeDash) || Input.GetMouseButtonDown(1)) && dashAlarm.IsAvailable())
         {
+            Managers.audioManager.PlaySound("shuffle");
             GetComponent<Animator>().SetTrigger("roll");
             dashAlarm.ResetTimer();
             StartCoroutine(DashTimer());
@@ -86,7 +96,12 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator DashTimer()
     {
         isDashing = true;
-        yield return new WaitForSecondsRealtime(Config.dashTimer);
+        int afterImageCount = 3;
+        for(int i = 0; i < afterImageCount; i++)
+        {
+            yield return new WaitForSecondsRealtime((float)Config.dashTimer / (float)afterImageCount);
+            Instantiate(afterImage, transform.position, Quaternion.identity);
+        }
         isDashing = false;
     }
 

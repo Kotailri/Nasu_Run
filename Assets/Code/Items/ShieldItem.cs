@@ -8,6 +8,7 @@ public class ShieldItem : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Managers.audioManager.PlaySound("inflate");
             collision.gameObject.GetComponent<PlayerShield>().GiveShield();
             Destroy(gameObject);
         }

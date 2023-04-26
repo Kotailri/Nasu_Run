@@ -49,7 +49,7 @@ public class Clef : MonoBehaviour
         if (moveTowardsPlayer)
         {
             speedToPlayer += Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speedToPlayer * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, ((Global.RoomSpeed/5) + speedToPlayer) * Time.deltaTime);
         }
     }
 
@@ -57,6 +57,7 @@ public class Clef : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Managers.audioManager.PlaySound("ding");
             Managers.scoreManager.AddScore(1);
             Destroy(gameObject);
         }

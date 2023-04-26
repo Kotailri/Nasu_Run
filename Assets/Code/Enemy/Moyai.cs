@@ -5,6 +5,13 @@ using UnityEngine;
 public class Moyai : Enemy
 {
     private bool isStunned = false;
+
+    public override void TakeDamage(int damage)
+    {
+        Managers.audioManager.PlaySound("crumble");
+        base.TakeDamage(damage);
+    }
+
     public override void OnDeath()
     {
         if (!isStunned)
@@ -27,7 +34,8 @@ public class Moyai : Enemy
         {
             if (playerMovement.IsDashing())
             {
-                GetComponent<SpawnClefBurst>().ClefBurst(Random.Range(3,6));
+                Managers.audioManager.PlaySound("success");
+                GetComponent<SpawnClefBurst>().ClefBurst();
                 Destroy(gameObject);
             }
         }

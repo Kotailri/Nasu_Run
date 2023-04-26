@@ -17,6 +17,7 @@ public class PlayerDeath : MonoBehaviour
 
     public void PlayerDie()
     {
+        Managers.audioManager.PlaySound("squeak");
         rb.isKinematic = false;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<PlayerMovement>().enabled = false;
@@ -47,6 +48,7 @@ public class PlayerDeath : MonoBehaviour
                 {
                     if (shield.HasShield())
                     {
+                        Managers.audioManager.PlaySound("pop");
                         shield.RemoveShield();
                         Destroy(tm.gameObject);
                         return;

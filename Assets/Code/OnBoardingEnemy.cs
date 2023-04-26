@@ -6,14 +6,18 @@ public class OnBoardingEnemy : MonoBehaviour
 {
     private void Start()
     {
+        Global.RoomSpeed = 1;
         Utility.InvokeLambda(() => { 
             GetComponent<Moyai>().OnDeath();
-        }, 0.25f);
+        }, 0.05f);
     }
 
     private void OnDisable()
     {
-        GameObject.Find("TestSpawner").GetComponent<EnemySpawnerTest>().StartSpawner();
-        Global.itemSpawner.StartSpawner();
+        if (Global.enemySpawner != null)
+            Global.enemySpawner.GetComponent<EnemySpawner>().StartSpawner();
+        if (Global.itemSpawner != null)
+            Global.itemSpawner.StartSpawner();
+        Global.RoomSpeed = Config.defaultRoomSpeed;
     }
 }

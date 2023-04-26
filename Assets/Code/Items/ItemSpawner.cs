@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    public Transform BoundsRefTop;
-    public Transform BoundsRefBot;
-
     [System.Serializable]
     public class SpawnerItem
     {
@@ -28,12 +25,12 @@ public class ItemSpawner : MonoBehaviour
 
     private IEnumerator SpawnItem()
     {
-        yield return new WaitForSeconds(Random.Range(5, 15));
+        yield return new WaitForSeconds(Random.Range(5, 10));
         foreach (SpawnerItem item in items)
         {
             if (Random.Range(0,101) <= item.percentChance)
             {
-                Instantiate(item.item, new Vector2(BoundsRefTop.position.x, Random.Range(BoundsRefBot.position.y, BoundsRefTop.position.y)), Quaternion.identity);
+                Managers.spawnManager.InstantiateRoomObject(item.item);
                 break;
             }
         }

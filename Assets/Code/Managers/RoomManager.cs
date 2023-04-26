@@ -43,7 +43,6 @@ public class RoomManager : Manager
         //currentRoomSection.ShuffleRoomList();
         //currentRoom = currentRoomSection.Rooms[currentRoomIndex];
         //Instantiate(currentRoom, roomSpawnLocation.position, Quaternion.identity);
-        Global.RoomSpeed = Config.defaultRoomSpeed;
         StartCoroutine(IncrementSpeed());
     }
 

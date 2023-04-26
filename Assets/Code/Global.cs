@@ -11,13 +11,16 @@ public static class Config
     public static float dashCooldown = 0.5f;
     public static float shootCooldown = 0.5f;
 
-    public static float defaultRoomSpeed = 3.5f;
+    public static float defaultRoomSpeed = 2.0f;
+
+    public static float soundVolume = 0.75f;
 }
 
 public static class Global
 {
     public static float RoomSpeed = 3.0f; // DON'T CHANGE
     public static ItemSpawner itemSpawner;
+    public static EnemySpawner enemySpawner;
 }
 
 public static class Managers
@@ -26,4 +29,6 @@ public static class Managers
     public static ScoreManager scoreManager;
     public static DistanceManager distanceManager;
     public static RoomManager roomManager;
+    public static SpawnManager spawnManager;
+    public static AudioManager audioManager;
 }

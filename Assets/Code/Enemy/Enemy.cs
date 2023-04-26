@@ -2,9 +2,9 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    private int hp;
+    public int hp;
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         hp -= damage;
         if (hp <= 0)

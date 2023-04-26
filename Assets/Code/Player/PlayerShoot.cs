@@ -25,6 +25,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot()
     {
+        Managers.audioManager.PlaySound("fluff");
         GameObject proj = Instantiate(projectile, transform.position, Quaternion.identity);
         proj.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0);
         shootTimer.ResetTimer();

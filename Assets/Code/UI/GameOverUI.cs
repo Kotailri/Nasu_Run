@@ -23,6 +23,7 @@ public class GameOverUI : MonoBehaviour
 
     public void RestartGame()
     {
+        Managers.audioManager.StopAllSounds();
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -38,11 +39,31 @@ public class GameOverUI : MonoBehaviour
     {
         content.SetActive(true);
         gameOverTextBox.text = "Distance: " + (int)Managers.distanceManager.GetDistance() + "m\n\n"
-            + "Clefs: x" + Managers.scoreManager.GetScore() + "\n\n" + "Score: " + CalculateScore();
+            + "Clefs: x" + Managers.scoreManager.GetScore() + "\n\n" + "Score: " + CalculateScore().ToString() + "\nHigh Score: " + GetHighScore().ToString();
         Time.timeScale = 0;
     }
-    private string CalculateScore()
+    private int CalculateScore()
     {
-        return ((int)Managers.distanceManager.GetDistance() + Managers.scoreManager.GetScore()).ToString();
+        return ((int)Managers.distanceManager.GetDistance() + Managers.scoreManager.GetScore());
+    }
+
+    private int GetHighScore()
+    {
+        int score = CalculateScore();
+        int highscore = PlayerPrefs.GetInt("highscore", 0);
+        if (score > highscore)
+        {
+            PlayerPrefs.SetInt("highscore", score);
+            return score;
+        }
+        return highscore;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale == 0)
+        {
+            RestartGame();
+        }
     }
 }
