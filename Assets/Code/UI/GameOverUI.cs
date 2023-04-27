@@ -11,6 +11,7 @@ public class GameOverUI : MonoBehaviour
     public GameObject content;
     public Button restartButton;
     public TextMeshProUGUI gameOverTextBox;
+    public TextMeshProUGUI headerTextBox;
 
     private Vector3 backScale;
 
@@ -54,8 +55,10 @@ public class GameOverUI : MonoBehaviour
         if (score > highscore)
         {
             PlayerPrefs.SetInt("highscore", score);
+            headerTextBox.text = "New Highscore!!";
             return score;
         }
+        headerTextBox.text = "Game Over!";
         return highscore;
     }
 

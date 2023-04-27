@@ -20,8 +20,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 dashDirection;
     public GameObject afterImage;
 
+    [HideInInspector]
+    public Vector2 directionFacing;
+    public GameObject movementIndicator;
+    private RollComboBonus rollCombo;
     private void Start()
     {
+        rollCombo = GetComponent<RollComboBonus>();
         dashAlarm = new Alarm(Config.dashCooldown);
         rb = GetComponent<Rigidbody2D>();
         playerSize = GetComponent<BoxCollider2D>().size;
@@ -50,6 +55,12 @@ public class PlayerMovement : MonoBehaviour
             velocity += new Vector3(0, -1, 0);
         }
 
+        if (velocity != Vector3.zero)
+            directionFacing = velocity.normalized;
+        else
+            directionFacing = new Vector3(1,0,0);
+
+
         if (isDashing)
         {
             if (dashDirection == Vector3.zero)
@@ -66,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = velocity.normalized * Config.playerMovespeed;
             dashDirection = velocity;
+            movementIndicator.transform.rotation = Quaternion.Euler(0,0, Mathf.Atan2(directionFacing.y, directionFacing.x) * Mathf.Rad2Deg);
         }
         
     }
@@ -79,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((Input.GetKeyDown(keycodeDash) || Input.GetMouseButtonDown(1)) && dashAlarm.IsAvailable())
         {
+            rollCombo.StartRollCombo();
             Managers.audioManager.PlaySound("shuffle");
             GetComponent<Animator>().SetTrigger("roll");
             dashAlarm.ResetTimer();
@@ -102,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
             yield return new WaitForSecondsRealtime((float)Config.dashTimer / (float)afterImageCount);
             Instantiate(afterImage, transform.position, Quaternion.identity);
         }
+        rollCombo.EndRollCombo();
         isDashing = false;
     }
 
@@ -114,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         float minX = minBound.x + (playerSize.x / 2) - 0.1f;
         float maxX = maxBound.x - (playerSize.x / 2);
         float minY = minBound.y + (playerSize.y / 2) + 0.1f;
-        float maxY = maxBound.y - (playerSize.y / 2) - 1;
+        float maxY = maxBound.y - (playerSize.y / 2) - 1.2f;
 
         playerPos.x = Mathf.Clamp(playerPos.x, minX, maxX);
         playerPos.y = Mathf.Clamp(playerPos.y, minY, maxY);

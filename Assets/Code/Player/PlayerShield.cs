@@ -12,6 +12,22 @@ public class PlayerShield : MonoBehaviour
         shield.GetComponent<SpriteRenderer>().enabled = false;
     }
 
+    public void HandleShieldDamage(GameObject obj)
+    {
+        if (obj.TryGetComponent(out TagManager tm))
+        {
+            if (tm.IsOfTag(Tags.DisabledByShield))
+            {
+                tm.GetComponent<BoxCollider2D>().enabled = false;
+            }
+
+            if (tm.IsOfTag(Tags.KilledByShield))
+            {
+                Destroy(obj);
+            }
+        }
+    }
+
     public bool HasShield()
     {
         return hasShield;

@@ -36,6 +36,7 @@ public class Moyai : Enemy
             {
                 Managers.audioManager.PlaySound("success");
                 GetComponent<SpawnClefBurst>().ClefBurst();
+                collision.gameObject.GetComponent<RollComboBonus>().AddRollKill();
                 Destroy(gameObject);
             }
         }

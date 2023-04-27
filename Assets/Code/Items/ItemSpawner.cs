@@ -25,7 +25,7 @@ public class ItemSpawner : MonoBehaviour
 
     private IEnumerator SpawnItem()
     {
-        yield return new WaitForSeconds(Random.Range(5, 10));
+        yield return new WaitForSeconds(Random.Range(0, 3));
         foreach (SpawnerItem item in items)
         {
             if (Random.Range(0,101) <= item.percentChance)

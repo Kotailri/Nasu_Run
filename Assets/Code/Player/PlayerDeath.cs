@@ -50,7 +50,7 @@ public class PlayerDeath : MonoBehaviour
                     {
                         Managers.audioManager.PlaySound("pop");
                         shield.RemoveShield();
-                        Destroy(tm.gameObject);
+                        shield.HandleShieldDamage(collision.gameObject);
                         return;
                     }
                 }

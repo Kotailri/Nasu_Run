@@ -5,7 +5,9 @@ public enum Tags
 {
     HitsPlayer,
     HitsEnemies,
-    DamagedByBullets
+    DamagedByBullets,
+    KilledByShield,
+    DisabledByShield
 }
 
 public class TagManager : MonoBehaviour

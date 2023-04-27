@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a35bd175e454148a274855eeec853a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 0000000002000000
+  tags: 000000000200000003000000
 --- !u!114 &8012199888463939505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,5 +357,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c0189e5f46a7e42aebc98e4a92bdab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numClefsMin: 3
-  numClefsMax: 5
+  numClefsMin: 2
+  numClefsMax: 4

@@ -28,6 +28,7 @@ public class BeamSpawner : MonoBehaviour
         comboList.Add(LeftRightVertCombo());
         comboList.Add(TopBotHoriCombo());
         comboList.Add(BotTopHoriCombo());
+        comboList.Add(ComboBeam());
     }
 
     public void SpawnBeam()
@@ -39,9 +40,18 @@ public class BeamSpawner : MonoBehaviour
 
     public void SpawnCombo()
     {
-        if (Random.Range(0,2) == 0)
+        if (Random.Range(0,3) != 0)
         {
             StartCoroutine(comboList[Random.Range(0, comboList.Count)]);
+        }
+    }
+
+    private IEnumerator ComboBeam()
+    {
+        for (int i = 0; i < Random.Range(2,4); i++)
+        {
+            SpawnBeam();
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
