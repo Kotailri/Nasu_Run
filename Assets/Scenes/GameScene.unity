@@ -5238,7 +5238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &568440670
 Transform:
   m_ObjectHideFlags: 0
@@ -6574,7 +6574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1051378780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7507,7 +7507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &1314408514
 Grid:
   m_ObjectHideFlags: 0
@@ -13380,6 +13380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashCooldownParticles: {fileID: 7194062977977524034, guid: fbfde9aa2124c884ca449265f89628d0, type: 3}
+  x: 0
   afterImage: {fileID: 534489459283951779, guid: a7663cc11139e58428c9a5827cf26cf9, type: 3}
   directionFacing: {x: 0, y: 0}
   movementIndicator: {fileID: 1354261665}
@@ -14826,7 +14827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1925842784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15587,7 +15588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2092331084
 Transform:
   m_ObjectHideFlags: 0

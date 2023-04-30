@@ -6,11 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject dashCooldownParticles;
 
+    public float x;
+
     private KeyCode keycodeLeft = KeyCode.A;
     private KeyCode keycodeRight = KeyCode.D;
     private KeyCode keycodeDown = KeyCode.S;
     private KeyCode keycodeUp = KeyCode.W;
-    private KeyCode keycodeDash = KeyCode.LeftShift;
 
     private Rigidbody2D rb;
     private Vector2 playerSize;
@@ -35,24 +36,33 @@ public class PlayerMovement : MonoBehaviour
     private void HandleMovement()
     {
         Vector3 velocity = Vector3.zero;
-        if (Input.GetKey(keycodeLeft))
-        {
-            velocity += new Vector3(-1, 0, 0);
-        }
+        Vector2 controllerInput = new Vector2(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
 
-        if (Input.GetKey(keycodeRight))
+        if (controllerInput != Vector2.zero)
         {
-            velocity += new Vector3(1, 0, 0);
+            velocity = controllerInput;
         }
-
-        if (Input.GetKey(keycodeUp))
+        else
         {
-            velocity += new Vector3(0, 1, 0);
-        }
+            if (Input.GetKey(keycodeLeft))
+            {
+                velocity += new Vector3(-1, 0, 0);
+            }
 
-        if (Input.GetKey(keycodeDown))
-        {
-            velocity += new Vector3(0, -1, 0);
+            if (Input.GetKey(keycodeRight))
+            {
+                velocity += new Vector3(1, 0, 0);
+            }
+
+            if (Input.GetKey(keycodeUp))
+            {
+                velocity += new Vector3(0, 1, 0);
+            }
+
+            if (Input.GetKey(keycodeDown))
+            {
+                velocity += new Vector3(0, -1, 0);
+            }
         }
 
         if (velocity != Vector3.zero)
@@ -89,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDash()
     {
-        if ((Input.GetKeyDown(keycodeDash) || Input.GetMouseButtonDown(1)) && dashAlarm.IsAvailable())
+        if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && dashAlarm.IsAvailable())
         {
             rollCombo.StartRollCombo();
             Managers.audioManager.PlaySound("shuffle");

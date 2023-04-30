@@ -64,7 +64,7 @@ public class GameOverUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale == 0)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && Time.timeScale == 0)
         {
             RestartGame();
         }

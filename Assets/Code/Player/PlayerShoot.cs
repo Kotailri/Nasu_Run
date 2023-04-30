@@ -7,7 +7,6 @@ public class PlayerShoot : MonoBehaviour
     public GameObject projectile;
     public float projectileSpeed;
 
-    private KeyCode keycodeShoot = KeyCode.Space;
     private Alarm shootTimer;
 
     private void Start()
@@ -17,7 +16,7 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetKeyDown(keycodeShoot) || Input.GetMouseButtonDown(0)) && shootTimer.IsAvailable())
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && shootTimer.IsAvailable())
         {
             Shoot();
         }
