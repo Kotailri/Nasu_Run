@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class OnBoardingEnemy : MonoBehaviour
 {
+    public GameObject tutorialInfo;
+
     private void Start()
     {
-        Global.RoomSpeed = 1;
+        Global.RoomSpeed = 0;
+        tutorialInfo.SetActive(false);
         Utility.InvokeLambda(() => { 
             GetComponent<Moyai>().OnDeath();
         }, 0.05f);
@@ -18,6 +21,10 @@ public class OnBoardingEnemy : MonoBehaviour
             Global.enemySpawner.GetComponent<EnemySpawner>().StartSpawner();
         if (Global.itemSpawner != null)
             Global.itemSpawner.StartSpawner();
+        if (Managers.roomManager != null)
+            Managers.roomManager.StartSpeedup();
         Global.RoomSpeed = Config.defaultRoomSpeed;
+        if (tutorialInfo != null)
+            tutorialInfo.SetActive(true);
     }
 }

@@ -18,7 +18,7 @@ public static class Config
 
 public static class Global
 {
-    public static float RoomSpeed = 3.0f; // DON'T CHANGE
+    public static float RoomSpeed = 0.0f; // DON'T CHANGE
     public static ItemSpawner itemSpawner;
     public static EnemySpawner enemySpawner;
 }

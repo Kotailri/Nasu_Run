@@ -6,8 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject dashCooldownParticles;
 
-    public float x;
-
     private KeyCode keycodeLeft = KeyCode.A;
     private KeyCode keycodeRight = KeyCode.D;
     private KeyCode keycodeDown = KeyCode.S;
@@ -99,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDash()
     {
-        if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && dashAlarm.IsAvailable())
+        if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && dashAlarm.IsAvailable())
         {
             rollCombo.StartRollCombo();
             Managers.audioManager.PlaySound("shuffle");
@@ -136,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 playerPos = transform.position;
 
         float minX = minBound.x + (playerSize.x / 2) - 0.1f;
-        float maxX = maxBound.x - (playerSize.x / 2);
+        float maxX = maxBound.x - (playerSize.x);
         float minY = minBound.y + (playerSize.y / 2) + 0.1f;
         float maxY = maxBound.y - (playerSize.y / 2) - 1.2f;
 

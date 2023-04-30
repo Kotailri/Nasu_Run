@@ -16,7 +16,7 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && shootTimer.IsAvailable())
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && shootTimer.IsAvailable())
         {
             Shoot();
         }

@@ -22,6 +22,7 @@ public class PlayerDeath : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<PlayerMovement>().enabled = false;
 
+        Managers.roomManager.StopSpeedup();
         Global.RoomSpeed = 0;
 
         Vector2 direction = new(1, 1);

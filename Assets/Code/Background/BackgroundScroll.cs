@@ -15,6 +15,9 @@ public class BackgroundScroll : MonoBehaviour
 
     void Update()
     {
+        if (Global.RoomSpeed == 0)
+            return;
+
         if (basedOffRoomSpeed)
         {
             float newPosition = Mathf.Repeat(Time.time * -scrollSpeed * (Global.RoomSpeed/5.0f), length);
