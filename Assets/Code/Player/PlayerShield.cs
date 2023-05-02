@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerShield : MonoBehaviour
 {
     public GameObject shield;
+    private Animator anim;
     private bool hasShield = false;
 
     private void Start()
     {
         shield.GetComponent<SpriteRenderer>().enabled = false;
+        anim = shield.GetComponent<Animator>();
     }
 
     public void HandleShieldDamage(GameObject obj)
@@ -37,11 +39,16 @@ public class PlayerShield : MonoBehaviour
     {
         hasShield = true;
         shield.GetComponent<SpriteRenderer>().enabled = true;
+        anim.SetBool("broken", false);
+        anim.SetTrigger("animSwap");
+
     }
 
     public void RemoveShield()
     {
         hasShield = false;
-        shield.GetComponent<SpriteRenderer>().enabled = false;
+        anim.SetBool("broken", true);
+        anim.SetTrigger("animSwap");
+        Utility.InvokeLambda(() => { shield.GetComponent<SpriteRenderer>().enabled = false; }, 1.5f);
     }
 }

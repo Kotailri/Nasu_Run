@@ -24,6 +24,9 @@ public class RollComboBonus : MonoBehaviour
         {
             GetComponent<SpawnClefBurst>().ClefBurst();
         }
+
+        string comboText = "Combo " + combo + "x!";
+        Managers.textSpawnerManager.SpawnTextObject(comboText, transform.position, false, 1);
     }
 
     public void StartRollCombo()

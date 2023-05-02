@@ -31,4 +31,5 @@ public static class Managers
     public static RoomManager roomManager;
     public static SpawnManager spawnManager;
     public static AudioManager audioManager;
+    public static SpawnText textSpawnerManager;
 }

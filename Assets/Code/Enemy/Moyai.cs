@@ -25,7 +25,7 @@ public class Moyai : Enemy
             return;
         }
 
-        Destroy(gameObject.transform.parent.gameObject);
+        Die();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,9 +37,15 @@ public class Moyai : Enemy
                 Managers.audioManager.PlaySound("success");
                 GetComponent<SpawnClefBurst>().ClefBurst();
                 collision.gameObject.GetComponent<RollComboBonus>().AddRollKill();
-                Destroy(gameObject);
+                Die();
             }
         }
+    }
+
+    private void Die()
+    {
+        Managers.audioManager.PlaySound("rocksmash");
+        GetComponent<MoyaiDeathAnim>().SetAnimationEnd("moyai_death");
     }
 
     private void OnDestroy()

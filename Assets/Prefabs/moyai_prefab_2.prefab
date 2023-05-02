@@ -190,6 +190,8 @@ GameObject:
   - component: {fileID: 8012199888463939505}
   - component: {fileID: 118816624710563754}
   - component: {fileID: 9122386842572429631}
+  - component: {fileID: 9141687440467865731}
+  - component: {fileID: 5345411270219170341}
   m_Layer: 0
   m_Name: moyai
   m_TagString: Untagged
@@ -359,3 +361,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numClefsMin: 6
   numClefsMax: 10
+--- !u!114 &9141687440467865731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690907092969346792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2311aedecf59f8c4f801a7f0a48751f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &5345411270219170341
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690907092969346792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e225a1ce8b1a9f4895a9e0088e7ac67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

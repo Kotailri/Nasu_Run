@@ -5,6 +5,7 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     private Transform follow;
+    public Vector3 offset = Vector3.zero;
 
     void Start()
     {
@@ -13,6 +14,6 @@ public class FollowPlayer : MonoBehaviour
 
     void Update()
     {
-        transform.position = follow.position;
+        transform.position = follow.position + offset;
     }
 }
