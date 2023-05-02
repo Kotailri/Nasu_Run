@@ -18,7 +18,7 @@ public class OnBoardingEnemy : MonoBehaviour
     private void OnDisable()
     {
         if (Global.enemySpawner != null)
-            Global.enemySpawner.GetComponent<EnemySpawner>().StartSpawner();
+            Global.enemySpawner.GetComponent<EnemySpawner>().StartGame();
         if (Global.itemSpawner != null)
             Global.itemSpawner.StartSpawner();
         if (Managers.roomManager != null)

@@ -14,11 +14,11 @@ public class BeamSpawner : MonoBehaviour
     public float comboActivationDistance;
     private bool comboSpawnerActive = false;
 
-    private float beamTimerMin = 1f;
+    private float beamTimerMin = 2f;
     private float beamTimerCurrent = 8f;
 
-    private float comboTimerMin = 5f;
-    private float comboTimerCurrent = 8f;
+    private float comboTimerMin = 7f;
+    private float comboTimerCurrent = 12f;
 
     private List<IEnumerator> comboList = new List<IEnumerator>();
 
@@ -115,14 +115,14 @@ public class BeamSpawner : MonoBehaviour
     {
         if (beamTimerCurrent > beamTimerMin)
         {
-            beamTimerCurrent -= 0.5f;
+            beamTimerCurrent -= 0.56f;
         }
     }
     private void DecreaseComboTime()
     {
         if (comboTimerCurrent > comboTimerMin)
         {
-            comboTimerCurrent -= 0.7f;
+            comboTimerCurrent -= 0.25f;
         }
     }
 

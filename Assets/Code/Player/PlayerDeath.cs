@@ -50,6 +50,7 @@ public class PlayerDeath : MonoBehaviour
                     if (shield.HasShield())
                     {
                         Managers.audioManager.PlaySound("pop");
+                        Managers.audioManager.PlaySound("shatter");
                         shield.RemoveShield();
                         shield.HandleShieldDamage(collision.gameObject);
                         return;

@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDash()
     {
-        if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && dashAlarm.IsAvailable())
+        if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Joystick1Button2) || Input.GetKeyDown(KeyCode.LeftShift)) && dashAlarm.IsAvailable())
         {
             rollCombo.StartRollCombo();
             Managers.audioManager.PlaySound("shuffle");

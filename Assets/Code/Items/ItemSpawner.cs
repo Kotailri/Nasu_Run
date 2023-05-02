@@ -9,6 +9,7 @@ public class ItemSpawner : MonoBehaviour
     {
         public GameObject item;
         public int percentChance;
+        public int activationDistance;
     }
 
     public List<SpawnerItem> items = new List<SpawnerItem>();
@@ -25,7 +26,7 @@ public class ItemSpawner : MonoBehaviour
 
     private IEnumerator SpawnItem()
     {
-        yield return new WaitForSeconds(Random.Range(0, 3));
+        yield return new WaitForSeconds(Random.Range(0, 2));
         foreach (SpawnerItem item in items)
         {
             if (Random.Range(0,101) <= item.percentChance)
