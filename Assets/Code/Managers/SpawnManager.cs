@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SpawnManager : Manager
 {
-    public Transform spawnTop;
-    public Transform spawnBot;
+    private Vector2 spawnTop;
+    private Vector2 spawnBot;
 
     protected override void SetManager()
     {
+        spawnTop = Managers.boundsRefManager.GetBoundsRefTop();
+        spawnBot = Managers.boundsRefManager.GetBoundsRefBot();
         Managers.spawnManager = this;
     }
 
@@ -18,12 +20,14 @@ public class SpawnManager : Manager
         if (obj.TryGetComponent(out SpriteRenderer sr))
         {
             Vector3 spriteBounds = sr.sprite.bounds.size;
-            obj.transform.position = new Vector2(spawnTop.position.x - spriteBounds.x / 2, Random.Range(spawnBot.position.y + spriteBounds.y / 2, spawnTop.position.y - spriteBounds.y / 2));
+            obj.transform.position = new Vector2(spawnTop.x - spriteBounds.x / 2, 
+                Random.Range(spawnBot.y + spriteBounds.y / 2, spawnTop.y - spriteBounds.y / 2));
         }
         else if (obj.TryGetComponent(out BoxCollider2D bc))
         {
             Vector3 spriteBounds = bc.bounds.size;
-            obj.transform.position = new Vector2(spawnTop.position.x - spriteBounds.x / 2, Random.Range(spawnBot.position.y + spriteBounds.y / 2, spawnTop.position.y - spriteBounds.y / 2));
+            obj.transform.position = new Vector2(spawnTop.x - spriteBounds.x / 2, 
+                Random.Range(spawnBot.y + spriteBounds.y / 2, spawnTop.y - spriteBounds.y / 2));
 
         }
         else

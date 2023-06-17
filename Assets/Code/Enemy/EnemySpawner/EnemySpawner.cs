@@ -32,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
     public void UpdateState()
     {
         // todo select new random state
+        ChangeState(SpawnerStateEnum.RandomSpawning);
     }
 
     private void ChangeState(SpawnerStateEnum s)
@@ -39,5 +40,4 @@ public class EnemySpawner : MonoBehaviour
         state = s;
         spawner[state].StartSpawner();
     }
-
 }

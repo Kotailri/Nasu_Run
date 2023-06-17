@@ -32,4 +32,5 @@ public static class Managers
     public static SpawnManager spawnManager;
     public static AudioManager audioManager;
     public static SpawnText textSpawnerManager;
+    public static BoundsRefManager boundsRefManager;
 }

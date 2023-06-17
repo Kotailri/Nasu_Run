@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Transactions;
 using UnityEngine;
 
 public class RandomSpawningState : SpawnerState
@@ -17,6 +16,7 @@ public class RandomSpawningState : SpawnerState
     public class EnemySpawnSet
     {
         public int percentChance;
+        public float stateTime;
         public int minDistance;
 
         [Space(10.0f)]
@@ -29,9 +29,11 @@ public class RandomSpawningState : SpawnerState
 
     public List<EnemySpawnSet> enemiesSet = new();
     private EnemySpawnSet currentSet;
+    private bool spawnerEnabled = true;
 
     public override void StartSpawner()
     {
+        spawnerEnabled = true;
         int maxIterations = 100;
         enemiesSet.Sort((a, b) => a.percentChance.CompareTo(b.percentChance));
         for (int i = 0; i < maxIterations; i++)
@@ -44,22 +46,36 @@ public class RandomSpawningState : SpawnerState
             }
         }
         Utility.PrintWarn("Could not find enemy set!");
+
         currentSet = enemiesSet[0];
+
         StartCoroutine(SpawnEnemy(currentSet.spawnTimerMin, currentSet.spawnTimerMax));
+        //StartCoroutine(StateTimer(currentSet.stateTime));
+    }
+
+    private IEnumerator StateTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        spawnerEnabled = false;
+        yield return new WaitForSeconds(1f);
+        InvokeSpawnCompletion();
     }
 
     private IEnumerator SpawnEnemy(float spawnTimerMin, float spawnTimerMax)
     {
-        yield return new WaitForSeconds(Random.Range(spawnTimerMin, spawnTimerMax));
-        for (int i = 0; i < currentSet.enemies.Count; i++)
+        if (spawnerEnabled)
         {
-            if (Random.Range(0, 101) <= currentSet.enemies[i].chance && currentSet.enemies[i].minDistance <= Managers.distanceManager.GetDistance())
+            yield return new WaitForSeconds(Random.Range(spawnTimerMin, spawnTimerMax));
+            for (int i = 0; i < currentSet.enemies.Count; i++)
             {
-                GameObject enemy = currentSet.enemies[i].enemy;
-                Managers.spawnManager.InstantiateRoomObject(enemy);
-                break;
+                if (Random.Range(0, 101) <= currentSet.enemies[i].chance && currentSet.enemies[i].minDistance <= Managers.distanceManager.GetDistance())
+                {
+                    GameObject enemy = currentSet.enemies[i].enemy;
+                    Managers.spawnManager.InstantiateRoomObject(enemy);
+                    break;
+                }
             }
+            StartCoroutine(SpawnEnemy(spawnTimerMin, spawnTimerMax));
         }
-        StartCoroutine(SpawnEnemy(spawnTimerMin, spawnTimerMax));
     }
 }
