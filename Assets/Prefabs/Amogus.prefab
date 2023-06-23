@@ -96,10 +96,10 @@ GameObject:
   - component: {fileID: 8140082916751124530}
   - component: {fileID: 8140082916751124533}
   - component: {fileID: 8140082916751124529}
-  - component: {fileID: 8140082916751124528}
   - component: {fileID: 1403114354148093042}
   - component: {fileID: 2965270580113394563}
   - component: {fileID: 8421509026465508364}
+  - component: {fileID: 9185371151337586630}
   m_Layer: 0
   m_Name: Amogus
   m_TagString: Untagged
@@ -115,7 +115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8140082916751124532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28, y: 2.06, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -206,7 +206,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.008682728, y: 0.057885557}
@@ -222,27 +222,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7858238, y: 0.87797886}
   m_EdgeRadius: 0
---- !u!50 &8140082916751124528
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8140082916751124532}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 6
 --- !u!114 &1403114354148093042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,8 +234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a227d427949e3f24aa162d31cdbcab77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  runSpeed: 0
+  hp: 5
+  smolAmogus: {fileID: 8140082916751124532, guid: e8eced5dc512d76438e8ef04b5841bd5, type: 3}
+  spawnDelay: 1
 --- !u!114 &2965270580113394563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a35bd175e454148a274855eeec853a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 0000000003000000
+  tags: 000000000300000002000000
 --- !u!114 &8421509026465508364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,3 +266,16 @@ MonoBehaviour:
   maxX: 0
   minY: 0
   maxY: 0
+--- !u!114 &9185371151337586630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140082916751124532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912c7b9f9d1a95742a530343a5e7b277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageCol: {r: 1, g: 0, b: 0, a: 1}

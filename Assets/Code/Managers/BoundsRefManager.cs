@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BoundsRefManager : Manager
+public class BoundsRefManager : MonoBehaviour
 {
     public Transform topref;
     public Transform botref;
@@ -8,11 +8,11 @@ public class BoundsRefManager : Manager
     private Vector2 topBounds;
     private Vector2 botBounds;
 
-    protected override void SetManager()
+    private void Awake()
     {
         topBounds = topref.position;
         botBounds = botref.position;
-        Managers.boundsRefManager = this;
+        Global.boundsRefManager = this;
     }
 
     public Vector2 GetBoundsRefTop()

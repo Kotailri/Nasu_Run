@@ -21,6 +21,7 @@ public static class Global
     public static float RoomSpeed = 0.0f; // DON'T CHANGE
     public static ItemSpawner itemSpawner;
     public static EnemySpawner enemySpawner;
+    public static BoundsRefManager boundsRefManager;
 }
 
 public static class Managers
@@ -32,5 +33,4 @@ public static class Managers
     public static SpawnManager spawnManager;
     public static AudioManager audioManager;
     public static SpawnText textSpawnerManager;
-    public static BoundsRefManager boundsRefManager;
 }

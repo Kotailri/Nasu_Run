@@ -98,8 +98,8 @@ GameObject:
   - component: {fileID: 8140082916751124542}
   - component: {fileID: 8140082916751124529}
   - component: {fileID: 8140082916751124528}
-  - component: {fileID: 1403114354148093042}
   - component: {fileID: 2965270580113394563}
+  - component: {fileID: 3637504433467653261}
   m_Layer: 0
   m_Name: SmolAmogus
   m_TagString: Untagged
@@ -256,19 +256,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!114 &1403114354148093042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8140082916751124532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a227d427949e3f24aa162d31cdbcab77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 1
 --- !u!114 &2965270580113394563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,4 +268,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a35bd175e454148a274855eeec853a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 0000000003000000
+  tags: 000000000300000002000000
+--- !u!114 &3637504433467653261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140082916751124532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6582a8c09b35ef24e8a54cce06d26698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 1

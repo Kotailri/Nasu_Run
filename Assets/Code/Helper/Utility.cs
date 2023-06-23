@@ -36,8 +36,12 @@ public static class Utility
         public IEnumerator InvokeCoroutine(Action action, float time)
         {
             yield return new WaitForSeconds(time);
-            action.Invoke();
-            Destroy(gameObject);
+            if (isActiveAndEnabled)
+            {
+                action.Invoke();
+                Destroy(gameObject);
+            }
+            
         }
     }
 

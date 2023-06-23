@@ -7,13 +7,22 @@ public class Amogus : Enemy
     private float maxY;
     private float minY;
 
-    public float runSpeed;
     private Direction runDirection;
+
+    [Space(10.0f)]
+    public GameObject smolAmogus;
+    public float spawnDelay;
 
     private enum Direction
     {
         downLeft,
         upLeft
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        GetComponent<DamageAnim>().PlayDamageAnim();
+        base.TakeDamage(damage);
     }
 
     public override void OnDeath()
@@ -25,8 +34,8 @@ public class Amogus : Enemy
     {
         BoxCollider2D bc = GetComponent<BoxCollider2D>();
         Vector3 spriteBounds = bc.bounds.size;
-        maxY = Managers.boundsRefManager.GetMaxY() + spriteBounds.y / 2;
-        minY = Managers.boundsRefManager.GetMinY() - spriteBounds.y / 2;
+        maxY = Global.boundsRefManager.GetMaxY() + spriteBounds.y / 2;
+        minY = Global.boundsRefManager.GetMinY() - spriteBounds.y / 2;
 
         if (Random.Range(0,2) == 0)
         {
@@ -36,8 +45,15 @@ public class Amogus : Enemy
         {
             runDirection = Direction.upLeft;
         }
-        
+
         UpdateRunDirection();
+        InvokeRepeating(nameof(SpawnAmogus), spawnDelay, spawnDelay);
+    }
+
+    private void SpawnAmogus()
+    {
+        if (Global.RoomSpeed > 0)
+            Instantiate(smolAmogus, transform.position + new Vector3(1,0,0), Quaternion.identity);
     }
 
     private void UpdateRunDirection()
@@ -45,12 +61,11 @@ public class Amogus : Enemy
         if (runDirection == Direction.downLeft) 
         {
             runDirection = Direction.upLeft;
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-1, 1).normalized * runSpeed;
         }
         else if (runDirection == Direction.upLeft)
         {
             runDirection = Direction.downLeft;
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-1, -1).normalized * runSpeed;
+            
         }
     }
 
@@ -64,6 +79,16 @@ public class Amogus : Enemy
         if (transform.position.y < minY && runDirection == Direction.downLeft)
         {
             UpdateRunDirection();
+        }
+
+        if (runDirection == Direction.upLeft)
+        {
+            transform.position += new Vector3(-Global.RoomSpeed * 2 * Time.deltaTime, Global.RoomSpeed * 2 * Time.deltaTime, 0);
+        }
+
+        if (runDirection == Direction.downLeft)
+        {
+            transform.position += new Vector3(-Global.RoomSpeed * 2 * Time.deltaTime, -Global.RoomSpeed * 2 * Time.deltaTime, 0);
         }
     }
 }

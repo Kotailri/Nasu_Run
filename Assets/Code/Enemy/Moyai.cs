@@ -8,7 +8,6 @@ public class Moyai : Enemy
 
     public override void TakeDamage(int damage)
     {
-        Managers.audioManager.PlaySound("crumble");
         base.TakeDamage(damage);
     }
 

@@ -9,9 +9,13 @@ public class SpawnManager : Manager
 
     protected override void SetManager()
     {
-        spawnTop = Managers.boundsRefManager.GetBoundsRefTop();
-        spawnBot = Managers.boundsRefManager.GetBoundsRefBot();
         Managers.spawnManager = this;
+    }
+
+    private void Start()
+    {
+        spawnTop = Global.boundsRefManager.GetBoundsRefTop();
+        spawnBot = Global.boundsRefManager.GetBoundsRefBot();
     }
 
     public void InstantiateRoomObject(GameObject g)
